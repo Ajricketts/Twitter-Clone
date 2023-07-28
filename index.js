@@ -1,8 +1,8 @@
-// import { tweetsData } from "/data.js"
+// import { setlocalStorage } from "/data.js"
 import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
+import { tweetsDatafromFile } from "./data.js";
 
-// setlocalStorage()
-let tweetsData = JSON.parse(localStorage.getItem("tweetsData"))
+let tweetsData = JSON.parse(localStorage.getItem('tweetsDatafromFile'))
 
 document.addEventListener('click', function(e){
     if(e.target.dataset.like){
@@ -32,8 +32,7 @@ document.addEventListener('click', function(e){
 })
 
 function updatelocalStorage() {
-    console.log("here")
-    localStorage.setItem('tweetsData', JSON.stringify(tweetsData))
+    localStorage.setItem('tweetsDatafromFile', JSON.stringify(tweetsData))
 }
  
 function handleLikeClick(tweetId){ 
@@ -201,10 +200,14 @@ function render(){
     document.getElementById('feed').innerHTML = getFeedHtml()
 }
 
-// function cleanup() {
-//     localStorage.clear()
-// }
+function main() {
+    if (tweetsData) {
+        render()
+    }
+    else {
+        tweetsData = tweetsDatafromFile
+        render()
+    }
+}
 
-render()
-
-
+main()

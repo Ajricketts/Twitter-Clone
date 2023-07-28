@@ -1,4 +1,4 @@
-export const tweetsData = [   
+export const tweetsDatafromFile = [   
     {
         handle: `@TrollBot66756542 💎`,
         profilePic: `images/troll.jpg`,
@@ -56,7 +56,3 @@ export const tweetsData = [
         uuid: '8hy671sff-c0f5-4545-9c4b-1237gyys45',
     },     
 ]
-
-export function setlocalStorage() {
-    localStorage.setItem('tweetsData', JSON.stringify(tweetsData))
-}
